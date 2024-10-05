@@ -1,5 +1,3 @@
 export const capitalize = (word) => {
-  if (word === "food") return "Food";
-  if (word === "apple") return "Apple";
-  return "Test";
+  return word[0].toUpperCase() + word.slice(1);
 };
