@@ -1,13 +1,22 @@
 import { capitalize } from "./capitalize";
 
-test('"test" should become "Test"', () => {
-  expect(capitalize("test")).toBe("Test");
-})
+const testWords = [
+  {
+    word: "test",
+    expected: "Test"
+  },
+  {
+    word: "apple",
+    expected: "Apple"
+  },
+  {
+    word: "food",
+    expected: "Food"
+  },
+];
 
-test('"apple" should become "Apple"', () => {
-  expect(capitalize("apple")).toBe("Apple");
-})
-
-test('"food" should become "Food"', () => {
-  expect(capitalize("food")).toBe("Food");
-})
+testWords.forEach(testCase => {
+  test(`${testCase.word} should be capitalized`, () => {
+    expect(capitalize(testCase.word)).toBe(testCase.expected);
+  })
+});
