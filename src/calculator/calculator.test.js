@@ -23,3 +23,15 @@ test("2 - 2 should return 0", () => {
 test("12 - 13 should return -1", () => {
   expect(calculator.subtract(12, 13)).toBe(-1);
 });
+
+test("9 / 3 should return 3", () => {
+  expect(calculator.divide(9, 3)).toBe(3);
+});
+
+test("-4 / 2 should return -2", () => {
+  expect(calculator.divide(-4, 2)).toBe(-2);
+});
+
+test("1 / 1 should return 1", () => {
+  expect(calculator.divide(1, 1)).toBe(1);
+});
