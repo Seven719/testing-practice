@@ -35,3 +35,15 @@ test("-4 / 2 should return -2", () => {
 test("1 / 1 should return 1", () => {
   expect(calculator.divide(1, 1)).toBe(1);
 });
+
+test("3 * 3 should return 9", () => {
+  expect(calculator.multiply(3, 3)).toBe(9);
+});
+
+test("-5 * 2 should return -10", () => {
+  expect(calculator.multiply(-5, 2)).toBe(-10);
+});
+
+test("0.7 * 0.6 should return 0.42", () => {
+  expect(calculator.multiply(0.7, 0.6)).toBe(0.42);
+});
