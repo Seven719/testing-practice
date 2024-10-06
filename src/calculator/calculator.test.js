@@ -1,49 +1,51 @@
+import { expect } from "@jest/globals";
 import { calculator } from "./calculator";
 
-test("5 + 6 should return 11", () => {
-  expect(calculator.add(5, 6)).toBe(11);
+describe("calculator.add", () => {
+  test.each([
+    [5, 6, 11],
+    [2, 2, 4],
+    [12, 13, 25],
+  ])("%i + %i should return %i", (a, b, expected) => {
+    expect(calculator.add(a, b)).toBe(expected);
+  });
 });
 
-test("2 + 2 should return 4", () => {
-  expect(calculator.add(2, 2)).toBe(4);
+describe("calculator.subtract", () => {
+  test.each([
+    [8, 3, 5],
+    [2, 2, 0],
+    [12, 13, -1],
+  ])("%i - %i should return %i", (a, b, expected) => {
+    expect(calculator.subtract(a, b)).toBe(expected);
+  });
 });
 
-test("12 + 13 should return 25", () => {
-  expect(calculator.add(12, 13)).toBe(25);
+describe("calculator.divide", () => {
+  test.each([
+    [9, 3, 3],
+    [-4, 2, -2],
+    [1, 1, 1],
+    [8, 3, 2.67],
+    [0.3, 0.2, 1.5],
+  ])("%f / %f should return %f", (a, b, expected) => {
+    expect(calculator.divide(a, b)).toBe(expected);
+  });
+
+  test.each([
+    ["hi", 0.3],
+    ["test", "hello"],
+  ])("should throw an error when inputs are %s and %s", (a, b) => {
+    expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
+  });
 });
 
-test("8 - 3 should return 5", () => {
-  expect(calculator.subtract(8, 3)).toBe(5);
-});
-
-test("2 - 2 should return 0", () => {
-  expect(calculator.subtract(2, 2)).toBe(0);
-});
-
-test("12 - 13 should return -1", () => {
-  expect(calculator.subtract(12, 13)).toBe(-1);
-});
-
-test("9 / 3 should return 3", () => {
-  expect(calculator.divide(9, 3)).toBe(3);
-});
-
-test("-4 / 2 should return -2", () => {
-  expect(calculator.divide(-4, 2)).toBe(-2);
-});
-
-test("1 / 1 should return 1", () => {
-  expect(calculator.divide(1, 1)).toBe(1);
-});
-
-test("3 * 3 should return 9", () => {
-  expect(calculator.multiply(3, 3)).toBe(9);
-});
-
-test("-5 * 2 should return -10", () => {
-  expect(calculator.multiply(-5, 2)).toBe(-10);
-});
-
-test("0.7 * 0.6 should return 0.42", () => {
-  expect(calculator.multiply(0.7, 0.6)).toBe(0.42);
+describe("calculator.multiply", () => {
+  test.each([
+    [3, 3, 9],
+    [-5, 2, -10],
+    [0.7, 0.6, 0.42],
+  ])("%f * %f should return %f", (a, b, expected) => {
+    expect(calculator.multiply(a, b)).toBe(expected);
+  });
 });
