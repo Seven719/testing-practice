@@ -8,7 +8,11 @@ export const calculator = {
   },
 
   divide(num1, num2) {
-    return num1 / num2;
+    if (isNaN(num1) || isNaN(num2)) return "One or both arguments are NaN.";
+
+    const result = num1 / num2;
+
+    return Number.isInteger(result) ? result : Math.round(result * 100) / 100;
   },
 
   multiply(num1, num2) {
