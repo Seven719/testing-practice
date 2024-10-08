@@ -1,7 +1,7 @@
 import { expect } from "@jest/globals";
 import { calculator } from "./calculator";
 
-describe("calculator.add", () => {
+describe("add", () => {
   test.each([
     [5, 6, 11],
     [2, 2, 4],
@@ -9,16 +9,9 @@ describe("calculator.add", () => {
   ])("%i + %i should return %i", (a, b, expected) => {
     expect(calculator.add(a, b)).toBe(expected);
   });
-
-  test.each([
-    ["hi", 0.3],
-    ["test", "hello"],
-  ])("should throw an error when inputs are %s and %s", (a, b) => {
-    expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
-  });
 });
 
-describe("calculator.subtract", () => {
+describe("subtract", () => {
   test.each([
     [8, 3, 5],
     [2, 2, 0],
@@ -26,35 +19,22 @@ describe("calculator.subtract", () => {
   ])("%i - %i should return %i", (a, b, expected) => {
     expect(calculator.subtract(a, b)).toBe(expected);
   });
-
-  test.each([
-    ["hi", 0.3],
-    ["test", "hello"],
-  ])("should throw an error when inputs are %s and %s", (a, b) => {
-    expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
-  });
 });
 
-describe("calculator.divide", () => {
+describe("divide", () => {
   test.each([
     [9, 3, 3],
     [-4, 2, -2],
     [1, 1, 1],
     [8, 3, 2.67],
     [0.3, 0.2, 1.5],
+    [5, 0, Infinity],
   ])("%f / %f should return %f", (a, b, expected) => {
     expect(calculator.divide(a, b)).toBe(expected);
   });
-
-  test.each([
-    ["hi", 0.3],
-    ["test", "hello"],
-  ])("should throw an error when inputs are %s and %s", (a, b) => {
-    expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
-  });
 });
 
-describe("calculator.multiply", () => {
+describe("multiply", () => {
   test.each([
     [3, 3, 9],
     [-5, 2, -10],
@@ -62,11 +42,16 @@ describe("calculator.multiply", () => {
   ])("%f * %f should return %f", (a, b, expected) => {
     expect(calculator.multiply(a, b)).toBe(expected);
   });
+});
 
+describe("Invalid inputs", () => {
   test.each([
     ["hi", 0.3],
     ["test", "hello"],
   ])("should throw an error when inputs are %s and %s", (a, b) => {
+    expect(calculator.add(a, b)).toBe("One or both arguments are NaN.");
+    expect(calculator.subtract(a, b)).toBe("One or both arguments are NaN.");
+    expect(calculator.multiply(a, b)).toBe("One or both arguments are NaN.");
     expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
   });
 });
