@@ -1,9 +1,11 @@
 export const calculator = {
   add(num1, num2) {
+    if (isNaN(num1) || isNaN(num2)) return "One or both arguments are NaN.";
     return num1 + num2;
   },
 
   subtract(num1, num2) {
+    if (isNaN(num1) || isNaN(num2)) return "One or both arguments are NaN.";
     return num1 - num2;
   },
 
@@ -16,6 +18,7 @@ export const calculator = {
   },
 
   multiply(num1, num2) {
+    if (isNaN(num1) || isNaN(num2)) return "One or both arguments are NaN.";
     return num1 * num2;
   },
 };
