@@ -9,6 +9,13 @@ describe("calculator.add", () => {
   ])("%i + %i should return %i", (a, b, expected) => {
     expect(calculator.add(a, b)).toBe(expected);
   });
+
+  test.each([
+    ["hi", 0.3],
+    ["test", "hello"],
+  ])("should throw an error when inputs are %s and %s", (a, b) => {
+    expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
+  });
 });
 
 describe("calculator.subtract", () => {
@@ -18,6 +25,13 @@ describe("calculator.subtract", () => {
     [12, 13, -1],
   ])("%i - %i should return %i", (a, b, expected) => {
     expect(calculator.subtract(a, b)).toBe(expected);
+  });
+
+  test.each([
+    ["hi", 0.3],
+    ["test", "hello"],
+  ])("should throw an error when inputs are %s and %s", (a, b) => {
+    expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
   });
 });
 
@@ -47,5 +61,12 @@ describe("calculator.multiply", () => {
     [0.7, 0.6, 0.42],
   ])("%f * %f should return %f", (a, b, expected) => {
     expect(calculator.multiply(a, b)).toBe(expected);
+  });
+
+  test.each([
+    ["hi", 0.3],
+    ["test", "hello"],
+  ])("should throw an error when inputs are %s and %s", (a, b) => {
+    expect(calculator.divide(a, b)).toBe("One or both arguments are NaN.");
   });
 });
