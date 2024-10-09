@@ -1,12 +1,15 @@
 export const caesarChiper = (string, shift) => {
-  let shiftedString = "";
+  return string
+    .split("")
+    .map((char) => {
+      let code = char.charCodeAt(0);
 
-  if (string === "abc" && shift === 3) shiftedString = "def";
-  if (string === "apple" && shift === 2) shiftedString = "crrng";
-  if (string === "xyz" && shift === 3) shiftedString = "abc";
-  if (string === "HeLLo" && shift === 3) shiftedString = "KhOOr";
-  if (string === "Hello, World!" && shift === 3)
-    shiftedString = "Khoor, Zruog!";
-
-  return shiftedString;
+      if (code >= 65 && code <= 90) {
+        return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+      } else if (code >= 97 && code <= 122) {
+        return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+      }
+      return char;
+    })
+    .join("");
 };
